@@ -15,14 +15,16 @@
         <div class="title mt-1 mb-1">
             <h1 class="title-form">Payment Form Example</h1>
         </div>
-
+        
         <div class="codes">
             <div class="alert alert-danger" role="alert">
                 Some fields are missing
             </div>
             <div class="form-container">
-                <form action="/submit" method="post">
-                <div class="container2">
+
+                <form id="paymentForm" action="/submit" method="post">
+                
+                  <div class="container2">
                     <fieldset class="column1">
                         <label for="nombre" class="form-label">Card #</label>
                         <input type="text" id="nombre" name="nombre" placeholder="XXXXXXXXXXXXXXXXXXXX" class="input-field1" required>
@@ -108,6 +110,7 @@
     </div>
 </div>
 </div>
+<script defer src="src/app.js"></script>
 </body>
 
 </html>
