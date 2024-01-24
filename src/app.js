@@ -26,19 +26,47 @@ document.addEventListener("DOMContentLoaded", function() {
     // Reinicia los mensajes de error
     resetErrorMessages();
 
-    // Obtiene los valores de los campos de tarjeta y CVC
+    // Obtiene los valores de los campos de formulario
     const cardNumber = document.getElementById("nombre").value;
     const cvc = document.getElementById("email").value;
+    const amount = document.getElementById("password").value;
+    const firstName = document.getElementById("First_Name").value;
+    const lastName = document.getElementById("Last_Name").value;
 
-    // Verifica si los campos están vacíos
-    if (!cardNumber || !cvc) {
-      displayError("Todos los campos son obligatorios.");
+    // Verifica la longitud de los campos
+    if (cardNumber.length !== 16) {
+      displayError("El campo de tarjeta debe tener exactamente 16 caracteres.");
+      return false;
+    }
+
+    if (cvc.length !== 3) {
+      displayError("El campo CVC debe tener exactamente 3 caracteres.");
       return false;
     }
 
     // Verifica si los campos son numéricos
     if (isNaN(cardNumber) || isNaN(cvc)) {
       displayError("Los campos de tarjeta y CVC deben ser numéricos.");
+      return false;
+    }
+
+    // Verifica si el campo CVC tiene el formato correcto (numérico)
+    if (!/^\d+$/.test(cvc)) {
+      displayError("El campo CVC debe contener solo números.");
+      return false;
+    }
+
+    // Verifica que Amount sea un número
+    if (isNaN(amount)) {
+      displayError("El campo Amount debe ser un valor numérico.");
+      return false;
+    }
+
+    // Verifica que First Name y Last Name contengan solo letras y espacios
+    if (!/^[A-Z]+$/.test(firstName) || !/^[A-Z]+$/.test(lastName)) {
+      displayError(
+        "Los campos de nombre y apellido deben contener solo letras y espacios."
+      );
       return false;
     }
 
