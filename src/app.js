@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Llama a la función de validación y muestra los mensajes de error si es necesario
     if (validateForm()) {
-      // Si la validación pasa, puedes enviar el formulario o realizar otras acciones aquí
+      // Si la validación pasa, se puede enviar el formulario o realizar otras acciones aquí
       console.log("Formulario válido. Puedes enviarlo.");
     } else {
       console.log("Formulario inválido. Por favor, corrige los errores.");
@@ -40,39 +40,62 @@ document.addEventListener("DOMContentLoaded", function() {
     missingFieldsError.style.display = "block";
   }
 
-  // Función de validación del formulario
+  // Función para mostrar mensajes de error
+  function displayError(message) {
+    const errorContainer = document.getElementById("missingFieldsError");
+    errorContainer.innerText = message;
+  }
+
+  // Función para reiniciar los mensajes de error
+  function resetErrorMessages() {
+    const errorContainer = document.getElementById("missingFieldsError");
+    errorContainer.innerText = ""; //
+    errorContainer.style.display = "none";
+  }
+
+  // Función validación del formulario
   function validateForm() {
-    // Reinicia los mensajes de error
     resetErrorMessages();
 
     // Obtiene los valores de los campos de formulario
-    const cardNumber = document.getElementById("cardNumber").value;
-    const cvc = document.getElementById("cvc").value;
-    const amount = document.getElementById("password").value;
-    const firstName = document.getElementById("First_Name").value;
-    const lastName = document.getElementById("Last_Name").value;
+    const cardNumber = document.getElementById("cardNumber");
+    const cvc = document.getElementById("cvc");
+    const amount = document.getElementById("password");
+    const firstName = document.getElementById("First_Name");
+    const lastName = document.getElementById("Last_Name");
 
     // Verifica la longitud de los campos
-    if (cardNumber.length !== 16) {
+    if (cardNumber.value.length !== 16) {
       displayError("El campo de tarjeta debe tener exactamente 16 caracteres.");
-      return false;
+      cardNumber.classList.add("error-field");
+    } else {
+      cardNumber.classList.remove("error-field");
     }
 
-    if (cvc.length !== 3) {
+    if (cvc.value.length !== 3) {
       displayError("El campo CVC debe tener exactamente 3 caracteres.");
-      return false;
+      cvc.classList.add("error-field");
+    } else {
+      cvc.classList.remove("error-field");
     }
 
     // Verifica si los campos son numéricos
-    if (isNaN(cardNumber) || isNaN(cvc)) {
+    if (isNaN(cardNumber.value) || isNaN(cvc.value)) {
       displayError("Los campos de tarjeta y CVC deben ser numéricos.");
-      return false;
+      cardNumber.classList.add("error-field");
+      cvc.classList.add("error-field");
+    } else {
+      cardNumber.classList.remove("error-field");
+      cvc.classList.remove("error-field");
     }
 
     // Verifica si el campo CVC tiene el formato correcto (numérico)
-    if (!/^\d+$/.test(cvc)) {
+    if (!/^\d+$/.test(cvc.value)) {
       displayError("El campo CVC debe contener solo números.");
+      cvc.classList.add("error-field");
       return false;
+    } else {
+      cvc.classList.remove("error-field");
     }
 
     // Verifica que Amount sea un número
@@ -89,22 +112,15 @@ document.addEventListener("DOMContentLoaded", function() {
       return false;
     }
 
-    // Aquí puedes agregar más validaciones según sea necesario
+    // Espacio para más validaciones
 
-    // Si la validación pasa, devuelve true
-    return true;
-  }
-
-  // Función para mostrar mensajes de error
-  function displayError(message) {
+    // Muestra el mensaje de error
     const errorContainer = document.getElementById("missingFieldsError");
-    errorContainer.innerText = message;
-  }
+    if (errorContainer.innerText !== "") {
+      errorContainer.style.display = "block";
+    }
 
-  // Función para reiniciar los mensajes de error
-  function resetErrorMessages() {
-    const errorContainer = document.getElementById("missingFieldsError");
-    errorContainer.innerText = ""; // Se puede omitir si se quiere ocultar el mensaje
-    errorContainer.style.display = "none"; // Estilo para ocultar el contenedor
+    // Devuelve true solo si no hay errores
+    return errorContainer.innerText === ""; // Se puede cambiar dependiendo de la lógica de validacion
   }
 });
