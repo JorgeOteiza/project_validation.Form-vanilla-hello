@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", function() {
     resetErrorMessages();
 
     // Obtiene los valores de los campos de formulario
-    const cardNumber = document.getElementById("nombre").value;
-    const cvc = document.getElementById("email").value;
+    const cardNumber = document.getElementById("cardNumber").value;
+    const cvc = document.getElementById("cvc").value;
     const amount = document.getElementById("password").value;
     const firstName = document.getElementById("First_Name").value;
     const lastName = document.getElementById("Last_Name").value;

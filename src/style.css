@@ -11,8 +11,8 @@ body {
 .container {
   padding: 20px;
   height: 80%;
-  width: 100%;
-  margin: 339px;
+  width: auto;
+  margin: 100px;
 }
 
 .container-formulario {
@@ -22,8 +22,11 @@ body {
 
 .title h1 {
   margin: 0;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 15px;
   font-size: 24px;
-  background-color: rgb(236, 236, 236);
+  background-color: rgba(137, 162, 220, 0.375);
   border-bottom: 1px solid rgb(170, 170, 170);
 }
 
@@ -109,21 +112,38 @@ body {
 }
 
 .WeAccept {
-  margin-bottom: 15px;
+  margin-bottom: 6px;
 }
 
 .form-check-input {
   margin-top: 20px;
 }
 
-.btn-primary {
-  margin-top: 20px;
-}
-
 .form-control {
   width: 100%;
   padding: 8px;
-  margin-top: 10px;
+  margin-top: 6px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 2px solid rgb(170, 170, 170);
+}
+
+.form-controlLastName {
+  width: auto;
+  padding: 8px;
+  margin-top: 6px;
+  margin-right: 0;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 2px solid rgb(170, 170, 170);
+}
+
+.form-controlState,
+.form-controlPostalCode {
+  width: 91%;
+  padding: 8px;
+  margin-top: 6px;
+  margin-right: 60px;
   margin-bottom: 15px;
   border-radius: 5px;
   border: 2px solid rgb(170, 170, 170);
@@ -134,12 +154,11 @@ body {
   justify-content: space-between;
   margin-top: 10px;
   margin-right: auto;
-  margin-bottom: 10px;
   margin-left: auto;
 }
 
 .container3 {
-  width: 46%;
+  width: 45%;
   display: inline-grid;
   padding-right: 23px;
   padding-left: 15px;
@@ -147,21 +166,11 @@ body {
 }
 
 .container4 {
-  width: 46%;
+  width: 45%;
   display: inline-grid;
   padding-right: 15px;
   padding-left: 30px;
-  margin-bottom: 50px;
-}
-
-.form-controlLastName {
-  width: auto;
-  padding: 8px;
-  margin-top: 10px;
-  margin-right: -3px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: 2px solid rgb(131 131, 131);
+  margin-bottom: 40px;
 }
 
 .State-PostalCode {
@@ -176,17 +185,6 @@ body {
   flex-direction: column;
 }
 
-.form-controlState,
-.form-controlPostalCode {
-  width: 93%;
-  padding: 8px;
-  margin-top: 10px;
-  margin-right: 60px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: 2px solid rgb(170, 170, 170);
-}
-
 /* Estilo del contenedor personalizado */
 .custom-select {
   position: relative;
@@ -195,7 +193,7 @@ body {
 
 /* Estilo del campo de entrada */
 .custom-select input {
-  width: 100%;
+  width: 91;
   box-sizing: border-box;
   padding: 8px;
   border-radius: 5px;
@@ -219,13 +217,14 @@ body {
 }
 
 .textComments {
-  margin-top: 15px;
+  margin-top: 6px;
   margin-bottom: 5px;
   width: 99%;
 }
 
 span {
   font-weight: 100;
+  font-size: small;
 }
 
 .button-validation {
@@ -233,12 +232,13 @@ span {
   text-align: end;
   padding-top: 0;
   padding-right: 15px;
-  padding-bottom: 15px;
-  background-color: rgb(238, 238, 238);
+  padding-bottom: 12px;
+  background-color: rgba(137, 162, 220, 0.375);
   border-top: 1px solid rgb(170, 170, 170);
 }
 
 .btn-primary {
+  margin-top: 12px;
   font-size: large;
   padding: 8px;
   background-color: rgb(0 117 255);
