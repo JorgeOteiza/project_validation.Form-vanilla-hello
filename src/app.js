@@ -18,8 +18,27 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log("Formulario válido. Puedes enviarlo.");
     } else {
       console.log("Formulario inválido. Por favor, corrige los errores.");
+      displayMissingFieldsError();
     }
   });
+
+  // Llamada al evento click del botón send
+  document.getElementById("sendButton").addEventListener("click", function() {
+    // Llama a la función de validación y muestra los mensajes de error si es necesario
+    if (validateForm()) {
+      // Si la validación pasa, se puede enviar formulario u otras acciones
+      console.log("Formulario válido. Puedes enviarlo.");
+    } else {
+      console.log("Formulario inválido. Por favor, corrige los errores.");
+      displayMissingFieldsError();
+    }
+  });
+
+  // Función para mostrar mensajes de error de campos faltantes
+  function displayMissingFieldsError() {
+    const missingFieldsError = document.getElementById("missingFieldsError");
+    missingFieldsError.style.display = "block";
+  }
 
   // Función de validación del formulario
   function validateForm() {
@@ -78,13 +97,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Función para mostrar mensajes de error
   function displayError(message) {
-    const errorContainer = document.getElementById("errorContainer");
+    const errorContainer = document.getElementById("missingFieldsError");
     errorContainer.innerText = message;
   }
 
   // Función para reiniciar los mensajes de error
   function resetErrorMessages() {
-    const errorContainer = document.getElementById("errorContainer");
-    errorContainer.innerText = "";
+    const errorContainer = document.getElementById("missingFieldsError");
+    errorContainer.innerText = ""; // Se puede omitir si se quiere ocultar el mensaje
+    errorContainer.style.display = "none"; // Estilo para ocultar el contenedor
   }
 });
